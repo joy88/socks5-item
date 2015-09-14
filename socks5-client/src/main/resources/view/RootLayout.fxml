@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:controller="me.binf.socks5.client.view.AppPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0"
-      prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.binf.socks5.client.view.AppPanel">
     <children>
         <VBox prefHeight="340.0" prefWidth="393.0" spacing="20.0">
             <children>
@@ -21,7 +21,7 @@
                 <HBox prefHeight="39.0" prefWidth="393.0" spacing="10.0">
                     <children>
                         <Label style="-fx-min-width: 200;" text="Email" />
-                        <TextField fx:id="emailField" />
+                        <TextField fx:id="emailField" prefHeight="23.0" prefWidth="282.0" />
                     </children>
                 </HBox>
                 <HBox prefHeight="124.0" spacing="10.0">
@@ -32,8 +32,8 @@
                 </HBox>
                 <HBox prefHeight="36.0" prefWidth="393.0" spacing="10.0">
                     <children>
-                        <Button onAction="#onCancel" mnemonicParsing="false" text="Cancel" />
-                        <Button onAction="#onOK" mnemonicParsing="false" text="OK" />
+                        <Button mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#onOK" text="OK" />
                     </children>
                     <padding>
                         <Insets left="210.0" />

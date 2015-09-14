@@ -5,28 +5,26 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  *
  */
-public class AppPanel extends HBox {
+public class AppPanel extends VBox {
 
     @FXML Label status;
-    @FXML TextField nameField;
-    @FXML TextField emailField;
-    @FXML TextArea commentsField;
+    @FXML TextField serverIP;
+    @FXML TextField serverPort;
+    @FXML TextField localPort;
 
-    @FXML public void onOK() {
+    @FXML public void onSave() {
         status.setText(computeStatus());
     }
 
-    @FXML public void onCancel() {
-        status.setText("You cancelled");
-    }
 
     private String computeStatus() {
-        return "Name: " + nameField.getText() + ", Email: " + emailField.getText() +
-                ", Comments: " + commentsField.getText();
+        return "Name: " + serverIP.getText() + ", Email: " + serverPort.getText() +
+                ", Comments: " + localPort.getText();
     }
 
 }
