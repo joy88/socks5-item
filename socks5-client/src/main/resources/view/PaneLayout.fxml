@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.binf.socks5.client.view.AppPanel">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.binf.socks5.client.view.AppPanelController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="452.0" VBox.vgrow="ALWAYS">
       <children>
@@ -25,29 +25,35 @@
                   <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="Server IP" textAlignment="JUSTIFY">
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="remote IP" textAlignment="JUSTIFY">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="serverIP" prefHeight="34.0" prefWidth="214.0" GridPane.columnIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="Server Port" textAlignment="JUSTIFY" GridPane.rowIndex="1">
+                  <TextField fx:id="remoteIp" prefHeight="34.0" prefWidth="214.0" GridPane.columnIndex="1" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="remote Port" textAlignment="JUSTIFY" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="serverPort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="remotePort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="Local Port" textAlignment="JUSTIFY" GridPane.rowIndex="2">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <TextField fx:id="localPort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="Save" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#onStop" prefHeight="39.0" prefWidth="88.0" text="stop" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <effect>
                         <ColorAdjust />
                      </effect>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="Save" textFill="#130a70" GridPane.rowIndex="3">
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </Button>
+
                </children>
                <opaqueInsets>
                   <Insets />
@@ -55,7 +61,7 @@
             </GridPane>
             <Pane layoutX="26.0" layoutY="14.0" prefHeight="51.0" prefWidth="592.0">
                <children>
-                  <Label fx:id="status" layoutY="-4.0" prefHeight="57.0" prefWidth="592.0" text="sd">
+                  <Label fx:id="status" layoutY="-4.0" prefHeight="57.0" prefWidth="592.0" text="">
                      <font>
                         <Font size="20.0" />
                      </font></Label>
