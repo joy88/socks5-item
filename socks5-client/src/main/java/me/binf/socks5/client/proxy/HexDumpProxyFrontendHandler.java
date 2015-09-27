@@ -43,7 +43,7 @@ public class HexDumpProxyFrontendHandler extends ChannelInboundHandlerAdapter {
          .option(ChannelOption.AUTO_READ, false);
         ChannelFuture f = b.connect(remoteHost, remotePort);
 
-        System.out.println("-------------------"+f.isSuccess());
+
 
 
         outboundChannel = f.channel();

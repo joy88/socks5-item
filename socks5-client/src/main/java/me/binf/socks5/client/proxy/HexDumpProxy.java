@@ -1,8 +1,7 @@
 package me.binf.socks5.client.proxy;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
@@ -36,13 +35,27 @@ public class HexDumpProxy {
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new HexDumpProxyInitializer(remoteIp, remotePort))
-                    .childOption(ChannelOption.AUTO_READ, false)
-                    .bind(localPort).sync().channel().closeFuture().sync();
+                    .childOption(ChannelOption.AUTO_READ, false);
+//
+//           b.bind(localPort).sync().addListener(new ChannelFutureListener() {
+//               @Override
+//               public void operationComplete(ChannelFuture future) throws Exception {
+//                   System.out.println(future.isSuccess());
+//               }
+//           });
+
+            b.bind(localPort).addListener(new ChannelFutureListener(){
+
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    System.out.println(future.isSuccess());
+                }
+            });
 
 
         } finally {
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+//            bossGroup.shutdownGracefully();
+//            workerGroup.shutdownGracefully();
         }
 
     }

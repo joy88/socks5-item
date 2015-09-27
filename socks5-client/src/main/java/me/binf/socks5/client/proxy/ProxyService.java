@@ -5,20 +5,14 @@ package me.binf.socks5.client.proxy;
  */
 public interface ProxyService {
 
-    default  void start(Integer localPort,String remoteIp,Integer remotePort){
-        try {
-            HexDumpProxy hexDumpProxy = HexDumpProxy.getInstance();
-            hexDumpProxy.start(localPort,remoteIp,remotePort);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-     }
+    public void start(Integer localPort,String remoteIp,Integer remotePort);
 
      default void stop(){
          HexDumpProxy hexDumpProxy = HexDumpProxy.getInstance();
          hexDumpProxy.bossGroup.shutdownGracefully();
          hexDumpProxy.workerGroup.shutdownGracefully();
      }
+
+
 
 }

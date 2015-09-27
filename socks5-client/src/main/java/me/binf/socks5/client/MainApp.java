@@ -49,10 +49,7 @@ public class MainApp extends Application {
         }
     }
 
-
-
     public void initConf(AppPanelController appPanelController){
-
         if(StringUtils.isNotBlank(ConfigUtil.getString("remote.ip"))
             &&StringUtils.isNotBlank(ConfigUtil.getString("remote.port"))
                 &&StringUtils.isNotBlank(ConfigUtil.getString("local.port"))){
