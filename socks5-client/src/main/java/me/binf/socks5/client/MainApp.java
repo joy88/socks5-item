@@ -1,11 +1,14 @@
 package me.binf.socks5.client;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import me.binf.socks5.client.proxy.HexDumpProxy;
+import javafx.stage.WindowEvent;
+import me.binf.socks5.client.service.ProxyService;
+import me.binf.socks5.client.service.ProxyServiceImpl;
 import me.binf.socks5.client.utils.ConfigUtil;
 import me.binf.socks5.client.view.AppPanelController;
 import org.apache.commons.lang.StringUtils;
@@ -13,12 +16,14 @@ import org.apache.commons.lang.StringUtils;
 import java.io.IOException;
 
 /**
- *                                              g
+ *
  */
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private VBox  rootLayout;
+
+
 
     @Override
     public void start(Stage primaryStage ) throws Exception {
@@ -42,6 +47,7 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             AppPanelController appPanelController = loader.getController();
+
             initConf(appPanelController);
 
         } catch (IOException e) {
@@ -58,6 +64,16 @@ public class MainApp extends Application {
             Integer localPort = Integer.valueOf(ConfigUtil.getString("local.port"));
             appPanelController.initConfSystem(remoteIp, remotePort, localPort);
         }
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                ProxyService proxyService = ProxyServiceImpl.getInstance();
+                proxyService.stop();
+            }
+        });
+
+
     }
 
 

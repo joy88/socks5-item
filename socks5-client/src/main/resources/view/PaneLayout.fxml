@@ -43,17 +43,11 @@
                      </font>
                   </Label>
                   <TextField fx:id="localPort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#onStop" prefHeight="39.0" prefWidth="88.0" text="stop" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="start" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <effect>
                         <ColorAdjust />
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="Save" textFill="#130a70" GridPane.rowIndex="3">
-                     <effect>
-                        <ColorAdjust />
-                     </effect>
-                  </Button>
-
                </children>
                <opaqueInsets>
                   <Insets />
