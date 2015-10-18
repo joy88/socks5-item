@@ -21,19 +21,6 @@ public class HexDumpProxy {
     private EventLoopGroup bossGroup = null;
     private EventLoopGroup workerGroup = null;
 
-    private EventLoopGroup lastBossGroup = null;
-    private EventLoopGroup lastWorkerGroup = null;
-
-    private List<EventLoopGroup> loopPool  = new ArrayList<>();
-
-    private static  HexDumpProxy instance= new HexDumpProxy();
-
-    private HexDumpProxy(){};
-
-    public static HexDumpProxy getInstance(){
-        return instance;
-    }
-
     public  void start(Integer localPort,String remoteIp,Integer remotePort)throws Exception{
 
         // Configure the bootstrap.
@@ -54,13 +41,9 @@ public class HexDumpProxy {
             public void operationComplete(ChannelFuture future) throws Exception {
                 ProxyService proxyService = ProxyServiceImpl.getInstance();
                 if(future.isSuccess()){
-                    if(lastBossGroup!=null&&lastWorkerGroup!=null){
-                        lastBossGroup.shutdownGracefully();
-                        lastWorkerGroup.shutdownGracefully();
-                    }
-                    lastBossGroup =   bossGroup;
-                    lastWorkerGroup = workerGroup;
-                    proxyService.noticeView("local port:\""+localPort+"\"connect success!");
+                    proxyService.noticeView(localPort+"端口连接成功!");
+                }else{
+
                 }
             }
         });

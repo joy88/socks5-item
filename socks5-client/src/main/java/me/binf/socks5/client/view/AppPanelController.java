@@ -34,7 +34,7 @@ public class AppPanelController extends BaseController{
 
         String sIp = remoteIp.getText();
         if(StringUtils.isBlank(sIp)){
-            notification("remote ip will cannot null");
+            notification("远程IP不能为空");
             remoteIp.requestFocus();
             return;
         }
@@ -42,7 +42,7 @@ public class AppPanelController extends BaseController{
 
         String lPort =  localPort.getText();
         if(StringUtils.isBlank(lPort)){
-            notification("local port will cannot null");
+            notification("本地端口不能为空");
             return;
         }
 
@@ -75,9 +75,11 @@ public class AppPanelController extends BaseController{
             Platform.runLater(() -> {
                 try {
                     status.setText(message);
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
     }
+
+
 }

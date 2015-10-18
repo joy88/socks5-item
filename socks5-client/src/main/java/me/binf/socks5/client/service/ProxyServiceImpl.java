@@ -5,6 +5,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import me.binf.socks5.client.proxy.HexDumpProxy;
 import me.binf.socks5.client.view.BaseController;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by wangbin on 2015/9/24.
  */
@@ -13,6 +16,11 @@ public class ProxyServiceImpl implements ProxyService {
 
     private BaseController baseController;
     private static  ProxyServiceImpl instance= new ProxyServiceImpl();
+
+    private  static ExecutorService executorService ;
+
+
+    HexDumpProxy hexDumpProxy ;
 
     private ProxyServiceImpl(){};
 
@@ -30,26 +38,29 @@ public class ProxyServiceImpl implements ProxyService {
     @Override
     public void start(Integer localPort, String remoteIp, Integer remotePort) {
 
-        HexDumpProxy hexDumpProxy = HexDumpProxy.getInstance();
-        new Thread(new Runnable() {
+        stop();
+        executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(new Runnable() {
             @Override
             public void run() {
                 try {
-                    hexDumpProxy.start(localPort,remoteIp,remotePort);
-                }catch (Exception e){
-                    stop();
+                    hexDumpProxy = new HexDumpProxy();
+                    hexDumpProxy.start(localPort, remoteIp, remotePort);
+                } catch (Exception e) {
                     e.printStackTrace();
-                    noticeView("error in application!");
                 }
             }
-        }).start();
+        });
+
     }
 
 
     @Override
     public void stop() {
-        HexDumpProxy hexDumpProxy = HexDumpProxy.getInstance();
-        hexDumpProxy.stop();
+        if(hexDumpProxy!=null&&executorService!=null){
+            hexDumpProxy.stop();
+            executorService.shutdownNow();
+        }
     }
 
 
@@ -65,5 +76,7 @@ public class ProxyServiceImpl implements ProxyService {
             e.printStackTrace();
         }
     }
+
+
 
 }
