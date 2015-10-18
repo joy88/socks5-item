@@ -7,7 +7,7 @@
 > * socks5-client 为客户端
 > * socks5-server 为服务器端
 
-运行环境为jdk8.x,GUI使用了“java-fx”调试请下载SceneBuilder。
+运行环境为jdk8.x,GUI使用了“javaFX”调试请下载SceneBuilder。
 
 ![socks5-item-client](client.png)
 
