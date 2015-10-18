@@ -47,7 +47,7 @@ public class ProxyServiceImpl implements ProxyService {
                     hexDumpProxy = new HexDumpProxy();
                     hexDumpProxy.start(localPort, remoteIp, remotePort);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    noticeView("本地"+localPort+"端口启动失败!");
                 }
             }
         });

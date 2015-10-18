@@ -18,6 +18,8 @@ package me.binf.socks5.client.proxy;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
+import me.binf.socks5.client.service.ProxyService;
+import me.binf.socks5.client.service.ProxyServiceImpl;
 
 public class HexDumpProxyFrontendHandler extends ChannelInboundHandlerAdapter {
 
@@ -25,6 +27,8 @@ public class HexDumpProxyFrontendHandler extends ChannelInboundHandlerAdapter {
     private final int remotePort;
 
     private volatile Channel outboundChannel;
+
+    ProxyService proxyService = ProxyServiceImpl.getInstance();
 
     public HexDumpProxyFrontendHandler(String remoteHost, int remotePort) {
         this.remoteHost = remoteHost;
@@ -48,10 +52,10 @@ public class HexDumpProxyFrontendHandler extends ChannelInboundHandlerAdapter {
             @Override
             public void operationComplete(ChannelFuture future) {
                 if (future.isSuccess()) {
-                    // connection complete start to read first data
+                    proxyService.noticeView("服务器"+remoteHost+":"+remotePort+"连接成功!");
                     inboundChannel.read();
                 } else {
-                    // Close the connection if the connection attempt has failed.
+                    proxyService.noticeView("服务器"+remoteHost+":"+remotePort+"连接失败!");
                     inboundChannel.close();
                 }
             }

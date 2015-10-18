@@ -21,6 +21,8 @@ public class HexDumpProxy {
     private EventLoopGroup bossGroup = null;
     private EventLoopGroup workerGroup = null;
 
+    ProxyService proxyService = ProxyServiceImpl.getInstance();
+
     public  void start(Integer localPort,String remoteIp,Integer remotePort)throws Exception{
 
         // Configure the bootstrap.
@@ -39,11 +41,10 @@ public class HexDumpProxy {
         f.addListener(new ChannelFutureListener(){
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
-                ProxyService proxyService = ProxyServiceImpl.getInstance();
                 if(future.isSuccess()){
-                    proxyService.noticeView(localPort+"端口连接成功!");
+                    proxyService.noticeView("本地"+localPort+"端口启动成功!");
                 }else{
-
+                    proxyService.noticeView("本地"+localPort+"端口启动失败!");
                 }
             }
         });

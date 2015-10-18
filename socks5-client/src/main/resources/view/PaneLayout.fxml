@@ -25,25 +25,25 @@
                   <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="remote IP" textAlignment="JUSTIFY">
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="远程IP:" textAlignment="JUSTIFY">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <TextField fx:id="remoteIp" prefHeight="34.0" prefWidth="214.0" GridPane.columnIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="remote Port" textAlignment="JUSTIFY" GridPane.rowIndex="1">
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="远程端口:" textAlignment="JUSTIFY" GridPane.rowIndex="1">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <TextField fx:id="remotePort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="Local Port" textAlignment="JUSTIFY" GridPane.rowIndex="2">
+                  <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="118.0" text="本地端口:" textAlignment="JUSTIFY" GridPane.rowIndex="2">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <TextField fx:id="localPort" prefHeight="35.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="start" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button mnemonicParsing="false" onAction="#onSave" prefHeight="39.0" prefWidth="88.0" text="保存并启动" textFill="#130a70" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <effect>
                         <ColorAdjust />
                      </effect>

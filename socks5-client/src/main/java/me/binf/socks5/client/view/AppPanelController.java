@@ -28,13 +28,13 @@ public class AppPanelController extends BaseController{
 
         String sPort = remotePort.getText();
         if(StringUtils.isBlank(sPort)){
-            notification("远程端口号不能为空!");
+            notification("杩滅▼绔彛涓嶈兘涓虹┖");
             return;
         }
 
         String sIp = remoteIp.getText();
         if(StringUtils.isBlank(sIp)){
-            notification("远程IP不能为空");
+            notification("杩滅▼ip涓嶈兘涓虹┖");
             remoteIp.requestFocus();
             return;
         }
@@ -42,7 +42,7 @@ public class AppPanelController extends BaseController{
 
         String lPort =  localPort.getText();
         if(StringUtils.isBlank(lPort)){
-            notification("本地端口不能为空");
+            notification("鏈湴绔彛涓嶈兘涓虹┖");
             return;
         }
 
